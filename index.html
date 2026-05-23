@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>راهنمای استفاده از ابزار آنتواسپای</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/index.css">
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="hero">
+      <div class="hero-grid">
+        <section>
+          <div class="hero-pill">
+            <svg viewBox="0 0 24 24"><path d="M20 7L12 3 4 7l8 4 8-4z"></path><path d="M4 12l8 4 8-4"></path><path d="M4 17l8 4 8-4"></path></svg>
+            نسخه پایتون سازگار: 3.11
+          </div>
+
+          <h1>راهنمای استفاده از ابزار آنتواسپای</h1>
+
+          <p class="hero-desc">
+            نصب، اجرای دستورها، اسکن آنتولوژی، تولید مستندات HTML، مصورسازی، تبدیل قالب RDF و معرفی کامل دستورهای اصلی Ontospy در ویندوز.
+          </p>
+
+          <div class="format-tags" aria-label="قالب‌های قابل استفاده">
+            <span class="format-chip" data-tooltip="خروجی RDF/XML">xml</span>
+            <span class="format-chip" data-tooltip="خروجی Notation3">n3</span>
+            <span class="format-chip" data-tooltip="خروجی Turtle یا TTL">turtle</span>
+            <span class="format-chip" data-tooltip="خروجی N-Triples">nt</span>
+            <span class="format-chip" data-tooltip="خروجی XML خواناتر و مرتب‌تر">pretty-xml</span>
+            <span class="format-chip" data-tooltip="خروجی JSON-LD برای وب معنایی">json-ld</span>
+          </div>
+        </section>
+
+        <aside class="hero-side">
+          <div class="glass-card">
+            <div class="glass-info">
+              <small>تهیه‌کننده</small>
+              <code>https://hosseinzadev...</code>
+            </div>
+            <a class="glass-copy" href="https://hosseinzadev.ir" target="_blank" rel="noopener" aria-label="باز کردن لینک تهیه‌کننده">
+              <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path></svg>
+            </a>
+          </div>
+
+          <div class="glass-card">
+            <div class="glass-info">
+              <small>مرجع رسمی</small>
+              <code title="https://lambdamusic.github.io/Ontospy/">https://lambdamusic....</code>
+            </div>
+            <a class="glass-copy" href="https://lambdamusic.github.io/Ontospy/" target="_blank" rel="noopener" aria-label="باز کردن مرجع رسمی">
+              <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><path d="M15 3h6v6"></path><path d="M10 14L21 3"></path></svg>
+            </a>
+          </div>
+
+          <div class="glass-card">
+            <div class="glass-info">
+              <small>مخزن</small>
+              <code title="https://github.com/lambdamusic/Ontospy">https://github.com/l...</code>
+            </div>
+            <a class="glass-copy" href="https://github.com/lambdamusic/Ontospy" target="_blank" rel="noopener" aria-label="باز کردن مخزن">
+              <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><path d="M15 3h6v6"></path><path d="M10 14L21 3"></path></svg>
+            </a>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+<section class="video-showcase">
+  <h2>آموزش ویدئویی آنتواسپای</h2>
+
+  <div class="video-shell" id="videoShell">
+    <video
+      id="trainingVideo"
+      preload="metadata"
+      playsinline
+      poster="./images/ontospy-poster.jpg"
+    >
+      <source src="./videos/ontospy-video.mp4">
+    </video>
+
+    <button class="big-play" id="bigPlayButton" type="button" aria-label="پخش ویدئو"></button>
+
+    <div class="teacher-badge" id="teacherBadge">
+      <span class="teacher-badge__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"></circle><path d="M20 21a8 8 0 0 0-16 0"></path></svg>
+      </span>
+      <div class="teacher-badge__text">
+        <strong>مدرس :</strong>
+        <small>محمد مهدی حسین زاده</small>
+      </div>
+    </div>
+
+    <div class="player-gradient"></div>
+
+    <div class="custom-controls is-hidden" id="customControls">
+      <div class="controls-panel">
+        <div class="progress-line">
+          <span class="time-inline" id="timeDisplay">00:00 / 00:00</span>
+
+          <div class="timeline-box glass-box">
+            <input id="timelineRange" type="range" min="0" max="1000" step="1" value="0" aria-label="تغییر زمان ویدئو">
+          </div>
+        </div>
+
+        <div class="controls-row">
+          <div class="controls-left">
+            <button class="control-btn play" id="playPauseButton" type="button" aria-label="پخش یا توقف">
+              <svg id="playPauseIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+            </button>
+
+            <button class="control-btn mute" id="muteButton" type="button" aria-label="قطع یا پخش صدا">
+              <svg id="muteIcon" viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4V5z"></path><path d="m16 9 5 5"></path><path d="m21 9-5 5"></path></svg>
+            </button>
+
+            <div class="volume-box glass-box">
+              <input id="volumeRange" type="range" min="0" max="100" step="1" value="100" aria-label="تنظیم صدا">
+            </div>
+          </div>
+
+          <div class="controls-right">
+            <div class="speed-dropdown" id="speedDropdown">
+              <button class="speed-button glass-box" id="speedButton" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span id="speedButtonLabel">x1</span>
+              </button>
+              <div class="speed-menu" id="speedMenu" role="listbox" aria-label="سرعت پخش">
+                <button type="button" class="speed-option" data-speed="0.5">x0.5</button>
+                <button type="button" class="speed-option" data-speed="0.75">x0.75</button>
+                <button type="button" class="speed-option is-active" data-speed="1">x1</button>
+                <button type="button" class="speed-option" data-speed="1.25">x1.25</button>
+                <button type="button" class="speed-option" data-speed="1.5">x1.5</button>
+                <button type="button" class="speed-option" data-speed="2">x2</button>
+              </div>
+            </div>
+
+            <button class="control-btn" id="fullscreenButton" type="button" aria-label="تمام‌صفحه">
+              <svg viewBox="0 0 24 24"><path d="M8 3H3v5"></path><path d="M16 3h5v5"></path><path d="M21 16v5h-5"></path><path d="M8 21H3v-5"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="intro-panel">
+      <h2>معرفی آنتواسپای</h2>
+      <p>
+        Ontospy یک ابزار خط فرمان برای بررسی، تحلیل و مستندسازی مدل‌های RDF و OWL است. این ابزار می‌تواند فایل‌های آنتولوژی را از مسیر محلی یا نشانی وب دریافت کند، ساختار آن‌ها مانند کلاس‌ها، ویژگی‌ها، فضای نام‌ها و نمونه‌ها را استخراج کند و سپس گزارش، مستندات HTML و خروجی‌های قابل مشاهده برای ارائه و تحلیل وب معنایی تولید کند.
+      </p>
+    </section>
+
+    <section class="panel">
+      <div class="section-title">
+        <div>
+          <h2>منابع نمونه برای آزمون ابزار</h2>
+          <p>از این منابع برای آزمون دستورهای scan، gendocs، ser و مستندسازی استفاده کنید.</p>
+        </div>
+      </div>
+
+      <div class="resource-list">
+        <div class="resource-row">
+          <div class="resource-main">
+            <div class="resource-title">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 0 20"></path><path d="M12 2a15.3 15.3 0 0 0 0 20"></path></svg>
+              آدرس سایت نمونه
+            </div>
+            <div class="resource-value" title="https://xmlns.com/foaf/spec/">copy link</div>
+          </div>
+          <div class="actions">
+            <button class="icon-btn" type="button" onclick="copyText('https://xmlns.com/foaf/spec/')" aria-label="کپی آدرس سایت">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="resource-row">
+          <div class="resource-main">
+            <div class="resource-title">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path></svg>
+              فایل آنتولوژی نمونه
+            </div>
+            <div class="resource-value" title="TSEOntology.ttl">download file</div>
+          </div>
+          <div class="actions">
+            <a class="icon-btn" href="#" download aria-label="دانلود فایل آنتولوژی">
+              <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="M7 10l5 5 5-5"></path><path d="M12 15V3"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide">
+
+      <details id="install" open>
+        <summary>
+          <span class="summary-title"><span class="step-badge">01</span>نصب پایتون 3.11</span>
+          <span class="toggle-icon"></span>
+        </summary>
+        <div class="content">
+          <p>روش اول: دانلود مستقیم پایتون 3.11 از سایت رسمی.</p>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>https://www.python.org/downloads/release/python-3110/</code>
+            <a class="copy-code" href="https://www.python.org/downloads/release/python-3110/" target="_blank" rel="noopener" aria-label="باز کردن لینک دانلود پایتون">
+              <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><path d="M15 3h6v6"></path><path d="M10 14L21 3"></path></svg>
+            </a>
+          </div>
+
+          <p>روش دوم: نصب با winget در PowerShell یا CMD.</p>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>winget install -e --id Python.Python.3.11</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+
+          <div class="note">هنگام نصب، گزینه Add Python to PATH را فعال کنید.</div>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title"><span class="step-badge">02</span>بررسی نسخه نصب‌شده پایتون</span>
+          <span class="toggle-icon"></span>
+        </summary>
+        <div class="content">
+          <p>نمایش نسخه‌های نصب‌شده پایتون:</p>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>py -0p</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+</div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title"><span class="step-badge">03</span>ایجاد پوشه پروژه و محیط ایزوله</span>
+          <span class="toggle-icon"></span>
+        </summary>
+        <div class="content">
+          <p>ایجاد پوشه پروژه و ورود به آن:</p>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>mkdir OntospyProject
+cd OntospyProject</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+
+          <p>ایجاد محیط ایزوله با پایتون 3.11:</p>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>py -3.11 -m venv .venv</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+
+          <p>فعال‌سازی محیط ایزوله در PowerShell یا CMD:</p>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>.venv\Scripts\activate</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title"><span class="step-badge">04</span>به‌روزرسانی pip و نصب Ontospy</span>
+          <span class="toggle-icon"></span>
+        </summary>
+        <div class="content">
+          <p>به‌روزرسانی pip با همین نسخه فعال‌شده پایتون:</p>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>python -m pip install --upgrade pip</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+
+          <p>نصب Ontospy:</p>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>pip install ontospy</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title"><span class="step-badge">05</span>بررسی نصب و فهرست دستورها</span>
+          <span class="toggle-icon"></span>
+        </summary>
+        <div class="content">
+          <p>نمایش راهنمای اصلی Ontospy:</p>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>ontospy --help</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+
+          <div class="command-list">
+            <div class="command-row"><span class="command-name">scan</span><span class="command-desc">اسکن آنتولوژی و نمایش گزارش ساختار فایل</span></div>
+            <div class="command-row"><span class="command-name">gendocs</span><span class="command-desc">تولید مستندات HTML، Markdown و خروجی‌های قابل مشاهده</span></div>
+            <div class="command-row"><span class="command-name">lib</span><span class="command-desc">مدیریت کتابخانه محلی RDF و آنتولوژی‌های ذخیره‌شده</span></div>
+            <div class="command-row"><span class="command-name">shell</span><span class="command-desc">اجرای محیط تعاملی برای بررسی آنتولوژی</span></div>
+            <div class="command-row"><span class="command-name">ser</span><span class="command-desc">تبدیل یا سریال‌سازی فایل RDF به قالب‌های دیگر</span></div>
+            <div class="command-row"><span class="command-name">utils</span><span class="command-desc">ابزارهای کمکی مثل کشف آنتولوژی و آزمون JSON-LD</span></div>
+          </div>
+        </div>
+      </details>
+<details id="scan">
+        <summary>
+          <span class="summary-title"><span class="step-badge">06</span>دستور scan: اسکن و تحلیل آنتولوژی</span>
+          <span class="toggle-icon"></span>
+        </summary>
+        <div class="content">
+          <p>اسکن آنتولوژی محلی:</p>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>ontospy scan filename</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+
+          <p>اسکن آنتولوژی آنلاین:</p>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>ontospy scan url</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+
+          <div class="command-list">
+            <div class="command-row"><span class="command-name">-f, --format</span><span class="command-desc">تعیین قالب ورودی مانند turtle</span></div>
+            <div class="command-row"><span class="command-name">-i, --individuals</span><span class="command-desc">استخراج نمونه‌های تعریف‌شده در آنتولوژی</span></div>
+            <div class="command-row"><span class="command-name">-x, --extra</span><span class="command-desc">استخراج داده‌های ضمنی با استنتاج ساده</span></div>
+            <div class="command-row"><span class="command-name">-r, --raw</span><span class="command-desc">نمایش RDF خام دریافت‌شده</span></div>
+            <div class="command-row"><span class="command-name">-e, --endpoint</span><span class="command-desc">معرفی آدرس به عنوان نقطه پایانی SPARQL</span></div>
+            <div class="command-row"><span class="command-name">-v, --verbose</span><span class="command-desc">نمایش جزئیات بیشتر در خروجی</span></div>
+          </div>
+
+          <h3>نمونه‌های کاربردی</h3>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>ontospy scan filename -i
+ontospy scan filename -x -i
+ontospy scan filename -r</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+        </div>
+      </details>
+
+      <details id="gendocs">
+        <summary>
+          <span class="summary-title"><span class="step-badge">07</span>دستور gendocs: تولید مستندات و مصورسازی</span>
+          <span class="toggle-icon"></span>
+        </summary>
+        <div class="content">
+          <p>ابتدا پوشه خروجی را بسازید:</p>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>mkdir docs</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+
+          <p>تولید مستندات از فایل محلی:</p>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>ontospy gendocs filename -o docs --type 2 --title "TSE Ontology"</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+
+          <p>نمایش نوع مستندات و قالب‌های موجود:</p>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>ontospy gendocs --showtypes
+ontospy gendocs --showthemes</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+<div class="command-list">
+            <div class="command-row"><span class="command-name">-o, --outputpath</span><span class="command-desc">مسیر ذخیره خروجی مستندات</span></div>
+            <div class="command-row"><span class="command-name">--type</span><span class="command-desc">نوع مستندات مانند تک‌صفحه‌ای یا چندصفحه‌ای</span></div>
+            <div class="command-row"><span class="command-name">--title</span><span class="command-desc">عنوان سفارشی مستندات</span></div>
+            <div class="command-row"><span class="command-name">--theme</span><span class="command-desc">انتخاب قالب ظاهری Bootstrap</span></div>
+            <div class="command-row"><span class="command-name">--showtypes</span><span class="command-desc">نمایش نوع‌های خروجی قابل استفاده</span></div>
+            <div class="command-row"><span class="command-name">--showthemes</span><span class="command-desc">نمایش قالب‌های قابل استفاده</span></div>
+            <div class="command-row"><span class="command-name">--nobrowser</span><span class="command-desc">جلوگیری از باز شدن خودکار مرورگر</span></div>
+            <div class="command-row"><span class="command-name">-l, --lib</span><span class="command-desc">انتخاب آنتولوژی از کتابخانه محلی</span></div>
+            <div class="command-row"><span class="command-name">-i, --individuals</span><span class="command-desc">نمایش نمونه‌ها در مستندات</span></div>
+            <div class="command-row"><span class="command-name">-x, --extra</span><span class="command-desc">افزودن داده‌های ضمنی به خروجی</span></div>
+            <div class="command-row"><span class="command-name">--preflabel</span><span class="command-desc">انتخاب qname یا برچسب برای عنوان موجودیت‌ها</span></div>
+            <div class="command-row"><span class="command-name">--preflang</span><span class="command-desc">انتخاب زبان ترجیحی برای برچسب‌های چندزبانه</span></div>
+          </div>
+
+          <h3>نمونه‌های کاربردی</h3>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>ontospy gendocs filename -o docs --type 1 --title "Single Page Docs"
+ontospy gendocs filename -o docs --type 2 --theme simplex
+ontospy gendocs filename -o docs --type 2 --preflabel label --preflang fa
+ontospy gendocs filename -o docs --type 2 -i -x --nobrowser
+ontospy gendocs -l -o docs --type 2</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+        </div>
+      </details>
+
+      <details id="lib">
+        <summary>
+          <span class="summary-title"><span class="step-badge">08</span>دستور lib: مدیریت کتابخانه محلی آنتولوژی‌ها</span>
+          <span class="toggle-icon"></span>
+        </summary>
+        <div class="content">
+          <p>ذخیره فایل یا نشانی آنتولوژی در کتابخانه محلی:</p>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>ontospy lib --save filename
+ontospy lib --save url</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+
+          <div class="command-list">
+            <div class="command-row"><span class="command-name">--save</span><span class="command-desc">ذخیره فایل محلی یا آنلاین در کتابخانه</span></div>
+            <div class="command-row"><span class="command-name">--show, -s</span><span class="command-desc">نمایش آنتولوژی‌های ذخیره‌شده</span></div>
+            <div class="command-row"><span class="command-name">--bootstrap</span><span class="command-desc">افزودن آنتولوژی‌های معروف به کتابخانه</span></div>
+            <div class="command-row"><span class="command-name">--cache</span><span class="command-desc">پاک‌سازی حافظه پنهان کتابخانه</span></div>
+            <div class="command-row"><span class="command-name">--directory</span><span class="command-desc">تغییر پوشه کتابخانه</span></div>
+            <div class="command-row"><span class="command-name">--reveal</span><span class="command-desc">باز کردن پوشه کتابخانه در سیستم‌عامل</span></div>
+            <div class="command-row"><span class="command-name">-i, --individuals</span><span class="command-desc">نمایش نمونه‌ها هنگام بازبینی</span></div>
+            <div class="command-row"><span class="command-name">-x, --extra</span><span class="command-desc">نمایش داده‌های ضمنی هنگام بازبینی</span></div>
+          </div>
+
+          <h3>نمونه‌های کاربردی</h3>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>ontospy lib --show
+ontospy lib --show -i
+ontospy lib --bootstrap
+ontospy lib --cache
+ontospy lib --reveal
+ontospy lib --directory C:\OntospyLibrary</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+        </div>
+      </details>
+
+      <details id="shell">
+        <summary>
+          <span class="summary-title"><span class="step-badge">09</span>دستور shell: محیط تعاملی Ontospy</span>
+          <span class="toggle-icon"></span>
+        </summary>
+        <div class="content">
+          <p>اجرای shell بدون فایل:</p>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>ontospy shell</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+
+          <div class="note">این دستور برای لینوکس است.</div>
+
+          <p>اجرای shell همراه با فایل آنتولوژی:</p>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>ontospy shell filename</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+
+          <div class="note">کاربرد shell برای بررسی تعاملی کلاس‌ها، ویژگی‌ها، فضای نام‌ها و اطلاعات آنتولوژی است.</div>
+        </div>
+      </details>
+
+      <details id="ser">
+        <summary>
+          <span class="summary-title"><span class="step-badge">10</span>دستور ser: تبدیل قالب RDF</span>
+          <span class="toggle-icon"></span>
+        </summary>
+        <div class="content">
+          <p>تولید خروجی Turtle، XML، N-Triples یا JSON-LD:</p>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>ontospy ser filename -f turtle
+ontospy ser filename -f xml
+ontospy ser filename -f pretty-xml
+ontospy ser filename -f nt
+ontospy ser filename -f json-ld</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+
+          <div class="command-list">
+            <div class="command-row"><span class="command-name">-f, --output_format</span><span class="command-desc">تعیین قالب خروجی</span></div>
+            <div class="command-row"><span class="command-name">-v, --verbose</span><span class="command-desc">نمایش جزئیات اجرا</span></div>
+          </div>
+        </div>
+      </details>
+
+      <details id="utils">
+        <summary>
+          <span class="summary-title"><span class="step-badge">11</span>دستور utils: ابزارهای کمکی</span>
+          <span class="toggle-icon"></span>
+        </summary>
+        <div class="content">
+          <p>جست‌وجوی آنتولوژی در مخزن‌های آنلاین:</p>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>ontospy utils --discover</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+
+          <p>آزمون فایل JSON-LD:</p>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>ontospy utils --jsonld file.jsonld</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+
+          <div class="command-list">
+            <div class="command-row"><span class="command-name">--discover, -d</span><span class="command-desc">پیدا کردن آنتولوژی آنلاین</span></div>
+            <div class="command-row"><span class="command-name">--jsonld, -j</span><span class="command-desc">بررسی فایل JSON-LD با محیط آزمون آنلاین</span></div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title"><span class="step-badge">12</span>پیاده‌سازی یک سناریوی کامل به عنوان نمونه</span>
+          <span class="toggle-icon"></span>
+        </summary>
+        <div class="content">
+          <div class="workflow">
+            <div class="workflow-card"><b>گام اول: نصب ابزار</b>پایتون و آنتواسپای را نصب کنید.</div>
+            <div class="workflow-card"><b>گام دوم: اسکن آنتولوژی</b>فایل یا لینک آنتولوژی را اسکن کنید.</div>
+            <div class="workflow-card"><b>گام سوم: مصورسازی و مستندسازی</b>با gendocs مستندات یا مصورسازی را تولید کنید.</div>
+            <div class="workflow-card"><b>گام چهارم: تغییر فرمت</b>با ser قالب فایل را تغییر دهید.</div>
+          </div>
+
+          <p style="margin-top:16px;">دستور نمونه برای اجرای پروژه</p>
+          <div class="code-box">
+            <span class="code-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"></path><path d="M8 6l-6 6 6 6"></path></svg></span>
+            <code>py -3.11 -m venv .venv
+.venv\Scripts\activate
+python -m pip install --upgrade pip
+pip install ontospy
+ontospy --help
+ontospy scan filename
+ontospy scan url
+mkdir docs
+ontospy gendocs filename -o docs --type 2 --title "Ontology Docs"
+ontospy gendocs url -o docs --type 2 --title "Online Ontology"
+ontospy ser filename -f json-ld</code>
+            <button class="copy-code" onclick="copyCode(this)" aria-label="کپی کد"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title"><span class="step-badge">13</span>خطاهای رایج و راه‌حل سریع</span>
+          <span class="toggle-icon"></span>
+        </summary>
+        <div class="content">
+          <div class="error-grid">
+            <div class="error-card">
+              <span class="error-title">ontospy not recognized</span>
+              <div>محیط مجازی فعال نیست یا نصب کامل نشده است.</div>
+            </div>
+            <div class="error-card">
+              <span class="error-title">pip not found</span>
+              <div>از دستور <b>python -m pip</b> استفاده کنید.</div>
+            </div>
+            <div class="error-card">
+              <span class="error-title">Invalid format</span>
+              <div>قالب را از میان xml، n3، turtle، nt، pretty-xml و json-ld انتخاب کنید.</div>
+            </div>
+            <div class="error-card">
+              <span class="error-title">Output path error</span>
+              <div>پیش از اجرای gendocs، پوشه docs را با دستور mkdir docs ایجاد کنید.</div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+    </section>
+
+  </main>
+
+  <div class="toast" id="toast">کپی شد</div>
+
+  <script src="./scripts/index.js"></script>
+</body>
+</html>

@@ -3905,6 +3905,7 @@ html::-webkit-scrollbar-thumb:hover{
 /* Keep the custom player proportional and its controls on one row on mobile. */
 @media(max-width:640px){
     .video-showcase{
+        padding:16px !important;
         min-width:0 !important;
         overflow:hidden !important;
     }

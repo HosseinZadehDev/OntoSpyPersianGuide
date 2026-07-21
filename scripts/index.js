@@ -168,7 +168,7 @@ function showToast(){
 
     try {
         if (isFullscreenActive() && isResponsiveDevice && orientation.lock) {
-        await orientation.lock('portrait');
+        await orientation.lock('landscape');
         } else if (!isFullscreenActive() && orientation.unlock) {
         orientation.unlock();
         }

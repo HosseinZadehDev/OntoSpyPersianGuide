@@ -3938,6 +3938,21 @@ html::-webkit-scrollbar-thumb:hover{
         font-size:11px !important;
     }
 
+    .big-play{
+        width:54px !important;
+        height:54px !important;
+        min-width:54px !important;
+        min-height:54px !important;
+        border-radius:15px !important;
+    }
+
+    .big-play::before{
+        border-top-width:10px !important;
+        border-bottom-width:10px !important;
+        border-left-width:15px !important;
+        transform:translateX(3px) !important;
+    }
+
     .video-shell{
         width:100% !important;
         max-width:100% !important;

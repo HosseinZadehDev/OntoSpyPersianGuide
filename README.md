@@ -65,9 +65,3 @@ git lfs pull
 - HTML5
 - CSS3
 - JavaScript
-- فونت Vazirmatn
-- Git LFS
-
-## تهیه‌کننده
-
-[محمد مهدی حسین‌زاده](https://hosseinzadeh.info)

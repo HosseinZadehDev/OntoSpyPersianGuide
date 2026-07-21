@@ -3902,6 +3902,107 @@ html::-webkit-scrollbar-thumb:hover{
     transform:translateY(0);
 }
 
+/* Keep the custom player proportional and its controls on one row on mobile. */
+@media(max-width:640px){
+    .video-showcase{
+        min-width:0 !important;
+        overflow:hidden !important;
+    }
+
+    .video-shell{
+        width:100% !important;
+        max-width:100% !important;
+        height:auto !important;
+        min-height:0 !important;
+        aspect-ratio:16 / 9 !important;
+    }
+
+    .custom-controls{
+        width:100% !important;
+        max-width:100% !important;
+        box-sizing:border-box !important;
+    }
+
+    .controls-panel{
+        width:100% !important;
+        max-width:100% !important;
+        box-sizing:border-box !important;
+        overflow:visible !important;
+    }
+
+    .controls-row{
+        width:100% !important;
+        min-width:0 !important;
+        flex-direction:row !important;
+        flex-wrap:nowrap !important;
+        align-items:center !important;
+        justify-content:space-between !important;
+    }
+
+    .controls-left,
+    .controls-right{
+        width:auto !important;
+        min-width:0 !important;
+        flex:0 1 auto !important;
+        flex-direction:row !important;
+        flex-wrap:nowrap !important;
+    }
+
+    .volume-box{
+        flex:1 1 88px !important;
+        min-width:64px !important;
+        max-width:88px !important;
+    }
+}
+
+@media(max-width:380px){
+    .custom-controls{
+        padding:0 6px 6px !important;
+    }
+
+    .controls-panel{
+        padding:8px !important;
+    }
+
+    .controls-row{
+        gap:6px !important;
+        margin-top:8px !important;
+    }
+
+    .controls-left,
+    .controls-right{
+        gap:4px !important;
+    }
+
+    .control-btn,
+    .speed-button,
+    .speed-dropdown{
+        width:34px !important;
+        height:34px !important;
+        min-width:34px !important;
+        flex-basis:34px !important;
+        border-radius:11px !important;
+    }
+
+    .control-btn svg{
+        width:18px !important;
+        height:18px !important;
+    }
+
+    .volume-box{
+        width:72px !important;
+        min-width:56px !important;
+        max-width:72px !important;
+        height:34px !important;
+        padding:0 6px !important;
+        border-radius:11px !important;
+    }
+
+    .timeline-box{
+        height:34px !important;
+    }
+}
+
 .speed-dropdown{
     order:1 !important;
 }

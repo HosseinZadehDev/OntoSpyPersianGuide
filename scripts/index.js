@@ -160,6 +160,23 @@ function showToast(){
     }
     }
 
+    async function syncResponsiveOrientation(){
+    const orientation = screen.orientation;
+    const isResponsiveDevice = window.matchMedia('(max-width: 1024px)').matches;
+
+    if (!orientation) return;
+
+    try {
+        if (isFullscreenActive() && isResponsiveDevice && orientation.lock) {
+        await orientation.lock('portrait');
+        } else if (!isFullscreenActive() && orientation.unlock) {
+        orientation.unlock();
+        }
+    } catch (_) {
+        // Orientation locking is not supported by every mobile browser.
+    }
+    }
+
     function closeSpeedMenu(){
     if (!speedDropdown || !speedButton) return;
     speedDropdown.classList.remove('is-open');
@@ -343,11 +360,13 @@ function showToast(){
     document.addEventListener("fullscreenchange", () => {
     updateFullscreenIcon();
     showControls();
+    syncResponsiveOrientation();
     });
 
     document.addEventListener("webkitfullscreenchange", () => {
     updateFullscreenIcon();
     showControls();
+    syncResponsiveOrientation();
     });
 
     controls.classList.add("is-hidden");
